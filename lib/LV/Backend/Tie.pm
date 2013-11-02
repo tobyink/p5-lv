@@ -20,37 +20,29 @@ our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.003';
 our @CARP_NOT  = qw( LV LV::Backend::Tie );
 
-sub getter { $_[0][0] = $_[1] if @_ > 1; $_[0][0] }
-sub setter { $_[0][1] = $_[1] if @_ > 1; $_[0][1] }
-sub name   { $_[0][2] = $_[1] if @_ > 1; $_[0][2] }
-sub throw  { require Carp; Carp::croak("${\ $_[0]->name } $_[1]") }
-
 sub TIESCALAR
 {
 	my $class = shift;
-	my $self  = bless([undef, undef, (caller(2))[3]], $class);
-	
 	my ($get, $set) = @_;
-	$self->throw("requires ~get or ~set block") unless $get || $set;
+
+	unless ($set && $get)
+	{
+		my $caller = (caller(2))[3];
+		$get ||= sub { require Carp; Carp::croak("$caller is writeonly") };
+		$set ||= sub { require Carp; Carp::croak("$caller is readonly") };
+	}
 	
-	$self->[0] = $get if $get;
-	$self->[1] = $set if $set;
-	
-	return $self;
+	bless [$get, $set] => $class;	
 }
 
 sub FETCH
 {
-	my $self = shift;
-	my $code = $self->[0] or $self->throw("is writeonly");
-	&$code;
+	&{shift->[0]};
 }
 
 sub STORE
 {
-	my $self = shift;
-	my $code = $self->[1] or $self->throw("is readonly");
-	&$code;
+	&{shift->[1]};
 }
 
 1;

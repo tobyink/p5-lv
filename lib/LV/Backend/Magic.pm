@@ -19,9 +19,12 @@ my $wiz = wizard(
 sub lvalue :lvalue
 {
 	my %args = @_;
-	my $caller = (caller(1))[3];
-	$args{get} ||= sub { require Carp; Carp::croak("$caller is writeonly") };
-	$args{set} ||= sub { require Carp; Carp::croak("$caller is readonly") };
+	unless ($args{set} && $args{get})
+	{
+		my $caller = (caller(1))[3];
+		$args{get} ||= sub { require Carp; Carp::croak("$caller is writeonly") };
+		$args{set} ||= sub { require Carp; Carp::croak("$caller is readonly") };
+	}
 	
 	$args{var} = \(my $var);
 	cast($var, $wiz, \%args);
