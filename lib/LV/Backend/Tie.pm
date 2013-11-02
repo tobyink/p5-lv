@@ -43,14 +43,14 @@ sub FETCH
 {
 	my $self = shift;
 	my $code = $self->[0] or $self->throw("is writeonly");
-	goto $code;
+	&$code;
 }
 
 sub STORE
 {
 	my $self = shift;
 	my $code = $self->[1] or $self->throw("is readonly");
-	goto $code;
+	&$code;
 }
 
 1;
