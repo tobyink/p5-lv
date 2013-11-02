@@ -4,3 +4,11 @@
 	issued  2013-11-02;
 	label   "Initial release".
 
+`LV 0.002 cpan:TOBYINK`
+	issued  2013-11-02;
+	changeset [
+		item "Prefer LV::Backend::Sentinel over LV::Backend::Magic when auto-selecting a backend implementation."^^Change;
+		item "Major speed improvements for LV::Backend::Magic."^^Change;
+		item "Minor speed improvements for LV::Backend::Tie."^^Change;
+		item "Bundle benchmarking script."^^Documentation;
+	].
