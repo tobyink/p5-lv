@@ -5,7 +5,7 @@ use warnings;
 package LV::Backend::Magic;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.003';
+our $VERSION   = '0.004';
 
 use Carp;
 use Variable::Magic qw( wizard cast );

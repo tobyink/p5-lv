@@ -22,3 +22,11 @@
 			dcs:thanks cpan:HAARG;
 		];
 	].
+
+`LV 0.004 cpan:TOBYINK`
+	issued  2013-11-02;
+	changeset [
+		item "Major speed improvements for LV::Backend::Sentinel."^^Change;
+		item "Major speed improvements for LV::Backend::Magic."^^Change;
+		item "Major speed improvements for LV::Backend::Tie."^^Change;
+	].
