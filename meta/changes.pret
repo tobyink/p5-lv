@@ -12,3 +12,13 @@
 		item "Minor speed improvements for LV::Backend::Tie."^^Change;
 		item "Bundle benchmarking script."^^Documentation;
 	].
+
+`LV 0.003 cpan:TOBYINK`
+	issued  2013-11-02;
+	changeset [
+		item [
+			a dcs:Change;
+			label "Eliminate goto in LV::Backend::Tie, resulting in slight speed improvements.";
+			dcs:thanks cpan:HAARG;
+		];
+	].

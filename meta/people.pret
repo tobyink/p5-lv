@@ -7,3 +7,7 @@ cpan:TOBYINK
 	:page  <https://metacpan.org/author/TOBYINK>;
 	:mbox  <mailto:tobyink@cpan.org>.
 
+cpan:HAARG
+	:name  "Graham Knop";
+	:page  <https://metacpan.org/author/HAARG>.
+

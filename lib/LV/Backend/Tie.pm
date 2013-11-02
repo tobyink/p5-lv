@@ -5,7 +5,7 @@ use warnings;
 package LV::Backend::Tie;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.002';
+our $VERSION   = '0.003';
 
 sub lvalue :lvalue
 {
@@ -17,7 +17,7 @@ sub lvalue :lvalue
 package LV::Backend::Tie::TiedScalar;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.002';
+our $VERSION   = '0.003';
 our @CARP_NOT  = qw( LV LV::Backend::Tie );
 
 sub getter { $_[0][0] = $_[1] if @_ > 1; $_[0][0] }
