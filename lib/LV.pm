@@ -53,8 +53,8 @@ if ( $ENV{PERL_LV_IMPLEMENTATION} )
 else
 {
 	my @implementations = qw(
-		LV::Backend::Magic
 		LV::Backend::Sentinel
+		LV::Backend::Magic
 		LV::Backend::Tie
 	);
 	
