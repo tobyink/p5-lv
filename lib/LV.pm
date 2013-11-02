@@ -82,6 +82,8 @@ __END__
 
 =encoding utf-8
 
+=for stopwords lvaluedness rvalue
+
 =head1 NAME
 
 LV - LV ♥ lvalue
@@ -104,8 +106,8 @@ LV - LV ♥ lvalue
 
 This module makes lvalue subroutines easy and practical to use.
 It's inspired by the L<lvalue> module which is sadly problematic
-because of the existance of another module on CPAN called L<Lvalue>.
-(They can get confused on filesystems that have case-insensitive
+because of the existence of another module on CPAN called L<Lvalue>.
+(They can get confused on file-systems that have case-insensitive
 file names.)
 
 LV comes with three different implementations, based on
