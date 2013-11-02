@@ -97,6 +97,52 @@ implementation using:
 The tie implementation is the slowest, but will work on Perl 5.6
 with only core modules.
 
+=head2 Functions
+
+=over
+
+=item C<< lvalue(%args) >>
+
+Creates the magic lvalue. This must be the last expression evaluated
+by the lvalue sub (and thus will be returned by the sub) but also
+must not be returned using an explicit C<return> keyword (which would
+break its lvaluedness).
+
+As a matter of style, you may like to omit the optional semicolon
+after calling this function, which will act as a reminder that no
+statement should follow this one.
+
+The arguments are C<get> and C<set>, which each take a coderef:
+
+   sub xxx :lvalue {
+      lvalue(
+         get => sub { $xxx },
+         set => sub { $xxx = $_[0] },
+      ); # semicolon
+   }
+
+Note that the C<set> coderef gets passed the rvalue part as
+C<< $_[0] >>.
+
+=item C<< get { BLOCK } >>,  C<< set { BLOCK } >>
+
+Convenience functions for defining C<get> and C<set> arguments for
+C<lvalue>:
+
+   sub xxx :lvalue {
+      lvalue
+         get { $xxx }
+         set { $xxx = $_[0] }
+   }
+
+As well as populating C<< %args >> for C<lvalue>, these functions also
+use L<Sub::Name> (if it's installed) to ensure that the anonymous
+coderefs have sensible names for the purposes of stack traces, etc.
+
+These functions are not exported by default.
+
+=back
+
 =head1 BUGS
 
 Please report any bugs to
