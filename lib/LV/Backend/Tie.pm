@@ -32,7 +32,7 @@ sub TIESCALAR
 		$set ||= sub { require Carp; Carp::croak("$caller is readonly") };
 	}
 	
-	bless [$get, $set] => $class;	
+	bless [$get, $set] => $class;
 }
 
 sub FETCH
