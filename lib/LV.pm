@@ -21,6 +21,25 @@ our @EXPORT_OK = qw( get set );
 sub get (&;@) { my $caller = (caller(1))[3]; get => subname("$caller~get", shift), @_ }
 sub set (&;@) { my $caller = (caller(1))[3]; set => subname("$caller~set", shift), @_ }
 
+{
+	my $i;
+	
+	sub implementation
+	{
+		return $i;
+	}
+	
+	sub _set_implementation
+	{
+		my $module = shift;
+		*lvalue = $module->can('lvalue') or do {
+			require Carp;
+			Carp::croak("$module does not appear to be an LV backend");
+		};
+		$i = $module;
+	}
+}
+
 if ( $ENV{PERL_LV_IMPLEMENTATION} )
 {
 	my $module = sprintf('LV::Backend::%s', $ENV{PERL_LV_IMPLEMENTATION});
@@ -28,7 +47,7 @@ if ( $ENV{PERL_LV_IMPLEMENTATION} )
 		require Carp;
 		Carp::croak("Could not load LV backend $module");
 	};
-	*lvalue = $module->can('lvalue');
+	_set_implementation($module);
 }
 
 else
@@ -41,9 +60,11 @@ else
 	
 	for my $module (@implementations)
 	{
-		eval "require $module; 1" or next;
-		*lvalue = $module->can('lvalue');
-		last;
+		if (eval "require $module; 1")
+		{
+			_set_implementation($module);
+			last;
+		}
 	}
 }
 
@@ -140,6 +161,12 @@ use L<Sub::Name> (if it's installed) to ensure that the anonymous
 coderefs have sensible names for the purposes of stack traces, etc.
 
 These functions are not exported by default.
+
+=item C<< implementation() >>
+
+Can be used to determine the current backend.
+
+Cannot be exported.
 
 =back
 
