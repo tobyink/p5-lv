@@ -30,3 +30,9 @@
 		item "Major speed improvements for LV::Backend::Magic."^^Change;
 		item "Major speed improvements for LV::Backend::Tie."^^Change;
 	].
+
+`LV 0.005 cpan:TOBYINK`
+	issued  2013-11-02;
+	changeset [
+		item "Recommend Sentinel over Variable::Magic."^^Packaging;
+	].
