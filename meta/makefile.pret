@@ -5,8 +5,8 @@
 `LV`
 	:runtime-requirement    [ :on "perl 5.006000"^^:CpanId ];
 	:runtime-recommendation [ :on "Sub::Name"^^:CpanId ];
-	:runtime-recommendation [ :on "Variable::Magic"^^:CpanId ];
-	:runtime-suggestion     [ :on "Sentinel"^^:CpanId ];
+	:runtime-recommendation [ :on "Sentinel"^^:CpanId ];
+	:runtime-suggestion     [ :on "Variable::Magic"^^:CpanId ];
 	:test-requirement       [ :on "Test::More 0.62"^^:CpanId ];
 	:develop-recommendation [ :on "Dist::Inkt 0.001"^^:CpanId ];
 	.
