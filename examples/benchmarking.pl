@@ -36,6 +36,6 @@ cmpthese(-1, {
 
 __END__
           Rate      Tie    Magic Sentinel
-Tie      150/s       --     -37%     -48%
-Magic    239/s      59%       --     -18%
-Sentinel 291/s      93%      22%       --
+Tie      177/s       --     -26%     -39%
+Magic    239/s      35%       --     -18%
+Sentinel 293/s      65%      23%       --
