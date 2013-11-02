@@ -8,7 +8,7 @@ our $AUTHORITY = 'cpan:TOBYINK';
 our $VERSION   = '0.001';
 
 BEGIN {
-	*subname = eval { require Sub::Name }
+	*_subname = eval { require Sub::Name }
 		? \&Sub::Name::subname
 		: sub { $_[1] }
 };
@@ -18,8 +18,8 @@ our @ISA       = qw( Exporter );
 our @EXPORT    = qw( lvalue );
 our @EXPORT_OK = qw( get set );
 
-sub get (&;@) { my $caller = (caller(1))[3]; get => subname("$caller~get", shift), @_ }
-sub set (&;@) { my $caller = (caller(1))[3]; set => subname("$caller~set", shift), @_ }
+sub get (&;@) { my $caller = (caller(1))[3]; get => _subname("$caller~get", shift), @_ }
+sub set (&;@) { my $caller = (caller(1))[3]; set => _subname("$caller~set", shift), @_ }
 
 {
 	my $i;
