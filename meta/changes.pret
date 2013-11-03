@@ -36,3 +36,9 @@
 	changeset [
 		item "Recommend Sentinel over Variable::Magic."^^Packaging;
 	].
+
+`LV 0.006 cpan:TOBYINK`
+	issued  2013-11-03;
+	changeset [
+		item "Reduce required version of Test::More from 0.62 to 0.47, which is the version that was bundled with Perl 5.006002."^^Packaging;
+	].

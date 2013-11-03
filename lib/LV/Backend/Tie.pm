@@ -5,7 +5,7 @@ use warnings;
 package LV::Backend::Tie;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.005';
+our $VERSION   = '0.006';
 
 sub lvalue :lvalue
 {
@@ -17,7 +17,7 @@ sub lvalue :lvalue
 package LV::Backend::Tie::TiedScalar;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.005';
+our $VERSION   = '0.006';
 our @CARP_NOT  = qw( LV LV::Backend::Tie );
 
 sub TIESCALAR

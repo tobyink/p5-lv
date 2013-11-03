@@ -5,7 +5,7 @@ use warnings;
 package LV;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.005';
+our $VERSION   = '0.006';
 
 BEGIN {
 	*_subname = eval { require Sub::Name }
