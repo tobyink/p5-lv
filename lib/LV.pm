@@ -164,6 +164,9 @@ coderefs have sensible names for the purposes of stack traces, etc.
 
 These functions are not exported by default.
 
+Although C<get> and C<set> make your code a little prettier, they do
+come with a performance cost. (See C<examples/benchmarking-style.pl>.)
+
 =item C<< implementation() >>
 
 Can be used to determine the current backend.
