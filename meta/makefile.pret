@@ -19,8 +19,4 @@
 	:test-requirement [
 		:on "Test::More 0.47"^^:CpanId;
 		comment "This is the Test::More version bundled with Perl 5.6.2, which was the first Perl to bundle Test::More at all.";
-	];
-	:develop-recommendation [
-		:on "Dist::Inkt 0.001"^^:CpanId;
 	].
-
